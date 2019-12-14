@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Grid from '@material-ui/core/Grid';
+import NotesHome from './pages/NotesHome/NotesHome';
 import './App.css';
+//redux
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './sagas/rootSaga';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers/rootReducer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootReducer,applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
+
+class App extends Component {
+  render() {
+    return (
+        <Provider store={store}>
+            <Grid container spacing={0} justify='center' alignItems='center'>
+                <Grid item xs={12} sm={12} md={8} lg={8} className='app-home'>
+                    <NotesHome/>
+                </Grid>
+            </Grid>
+        </Provider>
+    );
+  }
 }
 
 export default App;

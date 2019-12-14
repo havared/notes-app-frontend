@@ -1,0 +1,29 @@
+.notes-home-root-container{
+    margin-top: 20px;
+}
+
+.notes-home-input-card {
+    margin-bottom: 20px;
+}
+
+.new-notes-action-container{
+    float: right;
+    margin-top: 20px;
+}
+
+.checklist-input{
+    margin-top: 10px;
+}
+
+.checklist-input-textarea{
+    width: 60%;
+    padding-right: 10px !important;
+}
+
+.strike-through{
+    text-decoration: line-through;
+}
+
+.word-wrap{
+    word-wrap: break-word;
+}
